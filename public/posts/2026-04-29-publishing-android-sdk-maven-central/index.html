@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Publishing an Android SDK to Maven Central in 2026 | </title>
+<meta property="og:title" content="Publishing an Android SDK to Maven Central in 2026 | " />
+<meta name="twitter:title" content="Publishing an Android SDK to Maven Central in 2026 | " />
+<meta itemprop="name" content="Publishing an Android SDK to Maven Central in 2026 | " />
+<meta name="application-name" content="Publishing an Android SDK to Maven Central in 2026 | " />
+<meta property="og:site_name" content="" />
+
+<meta name="description" content="A real-world walkthrough of publishing a multi-module Android SDK to Maven Central in 2026 — including everything that broke, confused me and eventually worked.">
+<meta itemprop="description" content="A real-world walkthrough of publishing a multi-module Android SDK to Maven Central in 2026 — including everything that broke, confused me and eventually worked." />
+<meta property="og:description" content="A real-world walkthrough of publishing a multi-module Android SDK to Maven Central in 2026 — including everything that broke, confused me and eventually worked." />
+<meta name="twitter:description" content="A real-world walkthrough of publishing a multi-module Android SDK to Maven Central in 2026 — including everything that broke, confused me and eventually worked." />
+
+<meta property="og:locale" content="en-GB" />
+<meta name="language" content="en-GB" />
+
+  <link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2026-04-29-publishing-android-sdk-maven-central/" title="" />
+
+
+
+
+
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2026-04-29T00:00:00Z />
+    <meta property="article:published_time" content=2026-04-29T00:00:00Z />
+    <meta property="og:url" content="http://localhost:1313/posts/2026-04-29-publishing-android-sdk-maven-central/" />
+
+    
+    <meta property="og:article:author" content="Ezra Kanake" />
+    <meta property="article:author" content="Ezra Kanake" />
+    <meta name="author" content="Ezra Kanake" />
+    
+    
+
+    
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Publishing an Android SDK to Maven Central in 2026",
+        "author": {
+        "@type": "Person",
+        "name": "Ezra Kanake"
+        },
+        "datePublished": "2026-04-29",
+        "description": "A real-world walkthrough of publishing a multi-module Android SDK to Maven Central in 2026 — including everything that broke, confused me and eventually worked.",
+        "wordCount":  494 ,
+        "mainEntityOfPage": "http://localhost:1313/posts/2026-04-29-publishing-android-sdk-maven-central/",
+        "dateModified": "2026-04-29",
+        "image": {
+        "@type": "ImageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": ""
+        }
+    }
+    </script>
+
+
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    <meta property="og:url" content="http://localhost:1313/posts/2026-04-29-publishing-android-sdk-maven-central/">
+	<meta property="og:title" content="Publishing an Android SDK to Maven Central in 2026">
+	<meta property="og:description" content="A real-world walkthrough of publishing a multi-module Android SDK to Maven Central in 2026 — including everything that broke, confused me and eventually worked.">
+	<meta property="og:locale" content="en_GB">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-04-29T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-04-29T00:00:00+00:00">
+		<meta property="article:tag" content="Android">
+		<meta property="article:tag" content="Sdk">
+		<meta property="article:tag" content="Maven-Central">
+		<meta property="article:tag" content="Kotlin">
+		<meta property="article:tag" content="Gradle">
+		<meta property="article:tag" content="Open-Source">
+
+
+    
+    
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Publishing an Android SDK to Maven Central in 2026">
+	<meta name="twitter:description" content="A real-world walkthrough of publishing a multi-module Android SDK to Maven Central in 2026 — including everything that broke, confused me and eventually worked.">
+
+
+    
+
+    <link rel="canonical" href="http://localhost:1313/posts/2026-04-29-publishing-android-sdk-maven-central/">
+    <link href="/style.min.e390ba7da26222f4dc42a349955d76dbbe44e5ce2535a43de5a70633a0a9ec3c.css" rel="stylesheet">
+    <link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+<link rel="manifest" href="http://localhost:1313/site.webmanifest">
+
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#434648">
+    <meta name="color-scheme" content="light dark">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+
+    
+    
+</head>
+<body data-theme = "" class="notransition">
+
+<script src="/js/theme.js"></script>
+
+<div class="navbar" role="navigation">
+    <nav class="menu" aria-label="Main Navigation">
+        <a href="http://localhost:1313/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Home</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+        </a>
+        <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+        <label for="menu-trigger">
+            <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+            </span>
+        </label>
+
+        <div class="trigger">
+            <ul class="trigger-container">
+                
+                
+                <li>
+                    <a class="menu-link " href="/pages/projects/">
+                        Projects
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="/pages/about/">
+                        About
+                    </a>
+                    
+                </li>
+                
+                <li class="menu-separator">
+                    <span>|</span>
+                </li>
+                
+                
+            </ul>
+            <a id="mode" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Publishing an Android SDK to Maven Central in 2026</h1>
+                
+                
+                
+                <div class="post-meta">
+                    <time datetime="2026-04-29T00:00:00&#43;00:00" itemprop="datePublished"> 29 Apr 2026 </time>
+                </div>
+                
+            </header>
+            
+            <div class="page-content">
+                <p>This post is a real-world walkthrough of how I published my Translate Android SDK to Maven Central in 2026 — including everything that broke, confused me and eventually worked.</p>
+<p>The repo is also open for contributions — feel free to explore, break things and improve it!!</p>
+<h2 id="what-were-building">What we&rsquo;re building</h2>
+<p>We&rsquo;re going to build and publish a multi-module SDK:</p>
+<ul>
+<li><code>translate</code> → Core translation SDK</li>
+<li><code>translate-ui</code> → Jetpack Compose UI layer</li>
+</ul>
+<p>Published as:
+io.github.kanake10:translate:1.1.0</p>
+<p>io.github.kanake10:translate-ui:1.1.0</p>
+<h2 id="step-1--create-a-maven-central-account">Step 1 — Create a Maven Central account</h2>
+<p>Go to:</p>
+<p><a href="https://central.sonatype.com">https://central.sonatype.com</a></p>
+<p>Sign in using GitHub or email. (I used GitHub)</p>
+<p>This gives you:</p>
+<ul>
+<li>Publishing dashboard</li>
+<li>Deployment tracking</li>
+<li>Namespace management</li>
+</ul>
+<h2 id="step-2--create-and-verify-your-namespace">Step 2 — Create and verify your namespace</h2>
+<p>Maven Central requires a namespace (your group ID).</p>
+<ul>
+<li>Add namespace in Maven Central</li>
+<li>Receive verification token</li>
+<li>Add TXT record to DNS (or GitHub ownership verification)</li>
+<li>Click verify</li>
+</ul>
+<p>Once verified, you own the namespace.</p>
+<p>Example:
+io.github.yourusername</p>
+<p>This becomes your dependency prefix:
+for example mine is <code>io.github.kanake10</code></p>
+<h2 id="step-3--generate-gpg-keys-this-is-where-i-struggled-the-most">Step 3 — Generate GPG keys (this is where I struggled the most)</h2>
+<p>Maven Central requires all artifacts to be signed.</p>
+<p><strong>Install GPG (Mac)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install gnupg
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gpg --full-generate-key
+</span></span></code></pre></div><p>Select:</p>
+<ul>
+<li>RSA and RSA</li>
+<li>4096-bit key</li>
+<li>No expiration (or your preference)</li>
+</ul>
+<p>Afterwards, you&rsquo;ll need to add the following. Note down your Passphrase</p>
+<ul>
+<li>Real Name</li>
+<li>Email</li>
+<li>Passphrase</li>
+</ul>
+<p><strong>Export key for Gradle</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gpg --keyring secring.gpg --export-secret-keys &gt; ~/.gnupg/secring.gpg
+</span></span></code></pre></div><p><strong>List your keys</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gpg --list-secret-keys --keyid-format<span style="color:#f92672">=</span>long
+</span></span></code></pre></div><h2 id="step-4--local-gradle-configuration-important">Step 4 — Local Gradle configuration (IMPORTANT)</h2>
+<p>Create this file (on your local machine):
+~/.gradle/gradle.properties</p>
+<p><strong>Add credentials</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">mavenCentralUsername</span><span style="color:#f92672">=</span><span style="color:#e6db74">YOUR_USERNAME</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mavenCentralPassword</span><span style="color:#f92672">=</span><span style="color:#e6db74">YOUR_PASSWORD</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">signing.keyId</span><span style="color:#f92672">=</span><span style="color:#e6db74">YOUR_KEY_ID</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">signing.password</span><span style="color:#f92672">=</span><span style="color:#e6db74">YOUR_GPG_PASSPHRASE</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">signing.secretKeyRingFile</span><span style="color:#f92672">=</span><span style="color:#e6db74">/Users/yourname/.gnupg/secring.gpg</span>
+</span></span></code></pre></div><h2 id="step-5--add-maven-publishing-plugin">Step 5 — Add Maven publishing plugin</h2>
+<p>We use:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>id(<span style="color:#e6db74">&#34;com.vanniktech.maven.publish&#34;</span>) version <span style="color:#e6db74">&#34;0.36.0&#34;</span>
+</span></span></code></pre></div><p>Before you even add this plugin, make sure to read about it here. It will save you from a lot of pain.</p>
+<p><strong>Why this plugin exists</strong></p>
+<p>Without it, publishing requires:</p>
+<ul>
+<li>manual POM generation</li>
+<li>manual signing setup</li>
+<li>manual upload flow</li>
+</ul>
+<p>This plugin automates all of that and reduces mistakes.</p>
+<h2 id="step-6--configure-module-publishing">Step 6 — Configure module publishing</h2>
+<p>Example in my <code>translate</code> build.gradle.kts file</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span>mavenPublishing {
+</span></span><span style="display:flex;"><span>    publishToMavenCentral()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    signAllPublications()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    coordinates(
+</span></span><span style="display:flex;"><span>        groupId = <span style="color:#e6db74">&#34;io.github.kanake10&#34;</span>,
+</span></span><span style="display:flex;"><span>        artifactId = <span style="color:#e6db74">&#34;translate&#34;</span>,
+</span></span><span style="display:flex;"><span>        version = <span style="color:#e6db74">&#34;1.1.0&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    pom {
+</span></span><span style="display:flex;"><span>        name.<span style="color:#66d9ef">set</span>(<span style="color:#e6db74">&#34;Translate SDK&#34;</span>)
+</span></span><span style="display:flex;"><span>        description.<span style="color:#66d9ef">set</span>(<span style="color:#e6db74">&#34;Core translation SDK&#34;</span>)
+</span></span><span style="display:flex;"><span>        url.<span style="color:#66d9ef">set</span>(<span style="color:#e6db74">&#34;https://github.com/kanake10/translate-android&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        licenses {
+</span></span><span style="display:flex;"><span>            license {
+</span></span><span style="display:flex;"><span>                name.<span style="color:#66d9ef">set</span>(<span style="color:#e6db74">&#34;Apache-2.0&#34;</span>)
+</span></span><span style="display:flex;"><span>                url.<span style="color:#66d9ef">set</span>(<span style="color:#e6db74">&#34;https://www.apache.org/licenses/LICENSE-2.0.txt&#34;</span>)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        developers {
+</span></span><span style="display:flex;"><span>            developer {
+</span></span><span style="display:flex;"><span>                id.<span style="color:#66d9ef">set</span>(<span style="color:#e6db74">&#34;kanake10&#34;</span>)
+</span></span><span style="display:flex;"><span>                name.<span style="color:#66d9ef">set</span>(<span style="color:#e6db74">&#34;Ezra Kanake&#34;</span>)
+</span></span><span style="display:flex;"><span>                url.<span style="color:#66d9ef">set</span>(<span style="color:#e6db74">&#34;https://github.com/kanake10&#34;</span>)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        scm {
+</span></span><span style="display:flex;"><span>            url.<span style="color:#66d9ef">set</span>(<span style="color:#e6db74">&#34;https://github.com/kanake10/translate-android&#34;</span>)
+</span></span><span style="display:flex;"><span>            connection.<span style="color:#66d9ef">set</span>(<span style="color:#e6db74">&#34;scm:git:git://github.com/kanake10/translate-android.git&#34;</span>)
+</span></span><span style="display:flex;"><span>            developerConnection.<span style="color:#66d9ef">set</span>(<span style="color:#e6db74">&#34;scm:git:ssh://git@github.com/kanake10/translate-android.git&#34;</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="step-7--get-maven-central-tokens">Step 7 — Get Maven Central tokens</h2>
+<p>From:</p>
+<p><a href="https://central.sonatype.com/usertoken">https://central.sonatype.com/usertoken</a></p>
+<p>Generate:</p>
+<ul>
+<li>Username token</li>
+<li>Password token</li>
+</ul>
+<p>Don&rsquo;t forget to add them to your <code>gradle.properties</code> file</p>
+<h2 id="step-8--publish">Step 8 — Publish</h2>
+<p>Run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew publishToMavenCentral
+</span></span></code></pre></div><p>If everything is correct:</p>
+<ul>
+<li>artifacts are signed</li>
+<li>uploaded</li>
+<li>validated</li>
+<li>published</li>
+</ul>
+<h2 id="common-issues-i-hit">Common issues I hit</h2>
+<p><strong>❌ Missing username</strong></p>
+<p>→ wrong property names in <code>gradle.properties</code>.
+The vanniktech plugin also requires your username and password in <code>gradle.properties</code> to be exactly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">mavenCentralUsername</span><span style="color:#f92672">=</span><span style="color:#e6db74">YOUR_USERNAME</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mavenCentralPassword</span><span style="color:#f92672">=</span><span style="color:#e6db74">YOUR_PASSWORD</span>
+</span></span></code></pre></div><p><strong>❌ Invalid key ID</strong></p>
+<p>→ wrong GPG format or wrong key selected.
+The <code>signing.keyId</code> also requires your last 8 characters.</p>
+<p><strong>❌ Public key not found</strong></p>
+<p>→ forgot to upload GPG key:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gpg --keyserver keyserver.ubuntu.com --send-keys YOUR_KEY
+</span></span></code></pre></div><h2 id="final-result">Final result</h2>
+<p>After all this:</p>
+<ul>
+<li>Your SDK/lib is live on Maven Central</li>
+<li>Installable via Gradle globally</li>
+<li>Signed and validated</li>
+<li>Production-ready</li>
+</ul>
+
+            </div>
+        </article></main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+<a href="https://github.com/kanake10" target="_blank" rel="noopener noreferrer me"
+    title="Github">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+</a>
+<a href="https://medium.com/@10kanake" target="_blank" rel="noopener noreferrer me"
+    title="Medium">
+    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke-width="2"
+    viewBox="0 0 76.000000 76.000000" preserveAspectRatio="xMidYMid meet">
+    <g transform="translate(0.000000,76.000000) scale(0.100000,-0.100000)">
+        <path
+            d="M0 380 l0 -380 380 0 380 0 0 380 0 380 -380 0 -380 0 0 -380z m334 85 c30 -63 57 -115 59 -115 2 0 16 30 31 68 15 37 37 88 49 115 l20 47 76 0 76 -1 -27 -20 -28 -21 0 -151 c0 -150 0 -151 27 -179 l27 -28 -109 0 -109 0 27 28 c26 27 27 32 26 143 0 131 3 134 -71 -58 -24 -62 -48 -113 -53 -113 -6 0 -17 16 -24 35 -7 19 -36 83 -64 142 l-52 108 -3 -98 c-3 -97 -2 -99 28 -133 16 -19 30 -39 30 -44 0 -6 -31 -10 -70 -10 -45 0 -70 4 -70 11 0 6 14 27 30 46 30 33 30 35 30 151 0 116 0 118 -31 155 l-30 37 75 0 76 0 54 -115z" />
+    </g>
+</svg>
+</a>
+<a href="https://www.linkedin.com/in/ezra-kanake" target="_blank" rel="noopener noreferrer me"
+    title="Linkedin">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
+</svg>
+</a>
+<a href="/index.xml" target="_blank" rel="noopener noreferrer me"
+    title="Rss">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+</a>
+<a href="https://play.google.com/store/apps/developer?id=kanake" target="_blank" rel="noopener noreferrer me"
+    title="Googleplay">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+</a>
+</div>
+    <small class="footer_copyright">
+        © 2026 Ezra Kanake.
+        Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noopener">Hugo blog awesome</a>.
+    </small>
+</footer>
+
+
+
+
+
+
+
+    
+    <script async src="http://localhost:1313/js/main.js" ></script>
+
+    
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on </title>
+    <link>http://localhost:1313/pages/</link>
+    <description>Recent content in Pages on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-GB</language><atom:link href="http://localhost:1313/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/pages/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/about/</guid>
+      
+      <description>&lt;p&gt;Hey, I&amp;rsquo;m Ezra, a Mobile Engineer and an indie developer who loves working on open source projects and contributing to them outside of work.&lt;/p&gt;
+&lt;h2 id=&#34;what-i-do&#34;&gt;What I do&lt;/h2&gt;
+&lt;p&gt;I specialize in building Android apps with &lt;strong&gt;Jetpack Compose&lt;/strong&gt;, &lt;strong&gt;Clean
+Architecture&lt;/strong&gt; and &lt;strong&gt;Kotlin&lt;/strong&gt;. I care a lot about writing code that scales,
+is testable and easy for other engineers to work with.&lt;/p&gt;
+&lt;p&gt;I also maintain the &lt;a href=&#34;https://github.com/kanake10/translate-android&#34;&gt;Translate Android SDK&lt;/a&gt; on
+&lt;a href=&#34;https://central.sonatype.com/artifact/io.github.kanake10/translate&#34;&gt;Maven Central&lt;/a&gt; — a modular translation SDK with optional voice (TTS/STT) and
+camera (ML Kit OCR) plugins. I do write about Android patterns, SDKs and Kotlin on
+&lt;a href=&#34;https://medium.com/@10kanake&#34;&gt;Medium&lt;/a&gt;.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>http://localhost:1313/pages/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/pages/projects/</guid>
+      
+      <description>&lt;h2 id=&#34;translate-android-sdk&#34;&gt;Translate Android SDK&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Kotlin · Jetpack Compose · Maven Central · ML Kit&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A lightweight multi-module Android SDK for integrating powerful text translation built on the TranslatePlus API. Supports single text, batch, subtitle, email and HTML translation with an optional Jetpack Compose UI module included out of the box.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Single text, batch, subtitle, email and HTML translation&lt;/li&gt;
+&lt;li&gt;Optional pre-built Compose UI module with full slot API customization&lt;/li&gt;
+&lt;li&gt;Optional voice (TTS/STT) and camera (ML Kit OCR) plugins&lt;/li&gt;
+&lt;li&gt;Published on Maven Central&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/kanake10/translate-android&#34;&gt;GitHub&lt;/a&gt; · &lt;a href=&#34;https://central.sonatype.com/artifact/io.github.kanake10/translate&#34;&gt;Maven Central&lt;/a&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

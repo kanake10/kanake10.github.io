@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jetpack-Compose on </title>
+    <link>http://localhost:1313/tags/jetpack-compose/</link>
+    <description>Recent content in Jetpack-Compose on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-GB</language>
+    <lastBuildDate>Fri, 19 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/jetpack-compose/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visualize Android Components with Airbnb&#39;s ShowKase.</title>
+      <link>http://localhost:1313/posts/2023-05-19-visualize-android-components-showkase/</link>
+      <pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2023-05-19-visualize-android-components-showkase/</guid>
+      
+      <description>&lt;p&gt;Hello guys,hope you all good and welcome back.In today&amp;rsquo;s article we shall learn how to use Airbnb&amp;rsquo;s &lt;a href=&#34;https://github.com/airbnb/Showkase&#34;&gt;Showkase&lt;/a&gt; library to visualize android components.This is more of a browser in our android app to help engineers organize, discover, search and visualize &lt;a href=&#34;https://developer.android.com/jetpack/compose&#34;&gt;Jetpack Compose&lt;/a&gt; UI elements. To jump straight to the codebase, check the repo on my &lt;a href=&#34;https://github.com/kanake10/AirbnbShowkase&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;setting-up-showkase&#34;&gt;Setting up Showkase&lt;/h2&gt;
+&lt;p&gt;To set up showkase lib in our android app, we shall be required to add dependencies in our build gradle as follows.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Shoot your Composables with Shot Library.</title>
+      <link>http://localhost:1313/posts/2023-05-05-shoot-composables-shot-library/</link>
+      <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2023-05-05-shoot-composables-shot-library/</guid>
+      
+      <description>&lt;p&gt;Hello guys, welcome back .In the previous &lt;a href=&#34;https://medium.com/@10kanake/screenshot-testing-composable-with-paparazzi-library-e766006d0705&#34;&gt;article&lt;/a&gt;, we learnt how we can test our composables using paparazzi library in android development.In this article, weare going to test our android composables using &lt;a href=&#34;https://github.com/pedrovgs/Shot&#34;&gt;shot&lt;/a&gt; library.A little difference between paparazzi and shot is that shot library uses emulator/device to run while paparazzi does not need emulator.Shot library can also be run in single module app unlike paparazzi.&lt;/p&gt;
+&lt;p&gt;Keeping this short and sweet, let&amp;rsquo;s jump straight to integrating shot library in our android app.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Screenshot Testing Composables with Paparazzi Library 📸</title>
+      <link>http://localhost:1313/posts/2023-05-01-screenshot-testing-composable-paparazzi/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2023-05-01-screenshot-testing-composable-paparazzi/</guid>
+      
+      <description>&lt;p&gt;Hello guys, in today&amp;rsquo;s article we are going to see how we can test our composable in Android development using the &lt;a href=&#34;https://github.com/cashapp/paparazzi&#34;&gt;Paparazzi&lt;/a&gt; library by CashApp.&lt;/p&gt;
+&lt;h2 id=&#34;pre-requisite&#34;&gt;Pre-requisite&lt;/h2&gt;
+&lt;p&gt;Paparazzi does not run on monolith applications and hence we shall have to modularise our app.&lt;/p&gt;
+&lt;p&gt;Our first step will be creating a module in Android Studio. In this module we are going to create the composable we shall test. Before this, remember to add the Paparazzi dependency to your root module inclusive of the Paparazzi plugin.&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

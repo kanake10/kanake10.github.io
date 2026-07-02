@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Open-Source on </title>
+    <link>http://localhost:1313/tags/open-source/</link>
+    <description>Recent content in Open-Source on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-GB</language>
+    <lastBuildDate>Wed, 29 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Publishing an Android SDK to Maven Central in 2026</title>
+      <link>http://localhost:1313/posts/2026-04-29-publishing-android-sdk-maven-central/</link>
+      <pubDate>Wed, 29 Apr 2026 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2026-04-29-publishing-android-sdk-maven-central/</guid>
+      
+      <description>&lt;p&gt;This post is a real-world walkthrough of how I published my Translate Android SDK to Maven Central in 2026 — including everything that broke, confused me and eventually worked.&lt;/p&gt;
+&lt;p&gt;The repo is also open for contributions — feel free to explore, break things and improve it!!&lt;/p&gt;
+&lt;h2 id=&#34;what-were-building&#34;&gt;What we&amp;rsquo;re building&lt;/h2&gt;
+&lt;p&gt;We&amp;rsquo;re going to build and publish a multi-module SDK:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;translate&lt;/code&gt; → Core translation SDK&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;translate-ui&lt;/code&gt; → Jetpack Compose UI layer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Published as:
+io.github.kanake10:translate:1.1.0&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

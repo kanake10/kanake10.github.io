@@ -1,0 +1,42 @@
+baseURL = "https://kanake10.github.io/"
+locale = "en-GB"
+theme = "hugo-blog-awesome"
+paginate = 10
+
+[params]
+  description = "Mobile Engineer · SDK Author · Technical Writer"
+  info = "Building Mobile that scales. Writing about Kotlin, Compose, and open-source SDKs."
+
+  [params.author]
+    name = "Ezra Kanake"
+    avatar = "https://lh3.googleusercontent.com/a/ACg8ocIIoJXMfee_Lg6N6qQbXUjUOoxyF0IigeHIrWHQdvTdXm8rZd7I=s288-c-no"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/kanake10"
+
+  [[params.socialIcons]]
+    name = "medium"
+    url = "https://medium.com/@10kanake"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/ezra-kanake"
+
+  [[params.socialIcons]]
+    name = "rss"
+    url = "/index.xml"
+
+  [[params.socialIcons]]
+    name = "googleplay"
+    url = "https://play.google.com/store/apps/developer?id=kanake"
+
+[menu]
+  [[menu.main]]
+    name = "Projects"
+    url = "/pages/projects/"
+    weight = 1
+  [[menu.main]]
+    name = "About"
+    url = "/pages/about/"
+    weight = 2

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Paparazzi on </title>
+    <link>http://localhost:1313/tags/paparazzi/</link>
+    <description>Recent content in Paparazzi on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-GB</language>
+    <lastBuildDate>Mon, 01 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/paparazzi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Screenshot Testing Composables with Paparazzi Library 📸</title>
+      <link>http://localhost:1313/posts/2023-05-01-screenshot-testing-composable-paparazzi/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2023-05-01-screenshot-testing-composable-paparazzi/</guid>
+      
+      <description>&lt;p&gt;Hello guys, in today&amp;rsquo;s article we are going to see how we can test our composable in Android development using the &lt;a href=&#34;https://github.com/cashapp/paparazzi&#34;&gt;Paparazzi&lt;/a&gt; library by CashApp.&lt;/p&gt;
+&lt;h2 id=&#34;pre-requisite&#34;&gt;Pre-requisite&lt;/h2&gt;
+&lt;p&gt;Paparazzi does not run on monolith applications and hence we shall have to modularise our app.&lt;/p&gt;
+&lt;p&gt;Our first step will be creating a module in Android Studio. In this module we are going to create the composable we shall test. Before this, remember to add the Paparazzi dependency to your root module inclusive of the Paparazzi plugin.&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

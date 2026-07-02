@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title itemprop="name">Screenshot Testing Composables with Paparazzi Library 📸 | </title>
+<meta property="og:title" content="Screenshot Testing Composables with Paparazzi Library 📸 | " />
+<meta name="twitter:title" content="Screenshot Testing Composables with Paparazzi Library 📸 | " />
+<meta itemprop="name" content="Screenshot Testing Composables with Paparazzi Library 📸 | " />
+<meta name="application-name" content="Screenshot Testing Composables with Paparazzi Library 📸 | " />
+<meta property="og:site_name" content="" />
+
+<meta name="description" content="Learn how to test your Jetpack Compose UI components using the Paparazzi screenshot testing library by CashApp — no emulator needed.">
+<meta itemprop="description" content="Learn how to test your Jetpack Compose UI components using the Paparazzi screenshot testing library by CashApp — no emulator needed." />
+<meta property="og:description" content="Learn how to test your Jetpack Compose UI components using the Paparazzi screenshot testing library by CashApp — no emulator needed." />
+<meta name="twitter:description" content="Learn how to test your Jetpack Compose UI components using the Paparazzi screenshot testing library by CashApp — no emulator needed." />
+
+<meta property="og:locale" content="en-GB" />
+<meta name="language" content="en-GB" />
+
+  <link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2023-05-01-screenshot-testing-composable-paparazzi/" title="" />
+
+
+
+
+
+    
+    
+    
+
+    <meta property="og:type" content="article" />
+    <meta property="og:article:published_time" content=2023-05-01T00:00:00Z />
+    <meta property="article:published_time" content=2023-05-01T00:00:00Z />
+    <meta property="og:url" content="http://localhost:1313/posts/2023-05-01-screenshot-testing-composable-paparazzi/" />
+
+    
+    <meta property="og:article:author" content="Ezra Kanake" />
+    <meta property="article:author" content="Ezra Kanake" />
+    <meta name="author" content="Ezra Kanake" />
+    
+    
+
+    
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Screenshot Testing Composables with Paparazzi Library 📸",
+        "author": {
+        "@type": "Person",
+        "name": "Ezra Kanake"
+        },
+        "datePublished": "2023-05-01",
+        "description": "Learn how to test your Jetpack Compose UI components using the Paparazzi screenshot testing library by CashApp — no emulator needed.",
+        "wordCount":  472 ,
+        "mainEntityOfPage": "http://localhost:1313/posts/2023-05-01-screenshot-testing-composable-paparazzi/",
+        "dateModified": "2023-05-01",
+        "image": {
+        "@type": "ImageObject",
+        "url": ""
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": ""
+        }
+    }
+    </script>
+
+
+<meta name="generator" content="Hugo 0.163.3">
+
+    
+    <meta property="og:url" content="http://localhost:1313/posts/2023-05-01-screenshot-testing-composable-paparazzi/">
+	<meta property="og:title" content="Screenshot Testing Composables with Paparazzi Library 📸">
+	<meta property="og:description" content="Learn how to test your Jetpack Compose UI components using the Paparazzi screenshot testing library by CashApp — no emulator needed.">
+	<meta property="og:locale" content="en_GB">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2023-05-01T00:00:00+00:00">
+		<meta property="article:modified_time" content="2023-05-01T00:00:00+00:00">
+		<meta property="article:tag" content="Android">
+		<meta property="article:tag" content="Jetpack-Compose">
+		<meta property="article:tag" content="Testing">
+		<meta property="article:tag" content="Paparazzi">
+		<meta property="article:tag" content="Kotlin">
+
+
+    
+    
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Screenshot Testing Composables with Paparazzi Library 📸">
+	<meta name="twitter:description" content="Learn how to test your Jetpack Compose UI components using the Paparazzi screenshot testing library by CashApp — no emulator needed.">
+
+
+    
+
+    <link rel="canonical" href="http://localhost:1313/posts/2023-05-01-screenshot-testing-composable-paparazzi/">
+    <link href="/style.min.e390ba7da26222f4dc42a349955d76dbbe44e5ce2535a43de5a70633a0a9ec3c.css" rel="stylesheet">
+    <link href="/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css" rel="stylesheet">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+
+<link rel="manifest" href="http://localhost:1313/site.webmanifest">
+
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#2d89ef">
+<meta name="theme-color" content="#434648">
+    <meta name="color-scheme" content="light dark">
+
+    
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+
+    
+    
+</head>
+<body data-theme = "" class="notransition">
+
+<script src="/js/theme.js"></script>
+
+<div class="navbar" role="navigation">
+    <nav class="menu" aria-label="Main Navigation">
+        <a href="http://localhost:1313/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" 
+viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+stroke-linejoin="round" class="feather feather-home">
+<title>Home</title>
+<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+<polyline points="9 22 9 12 15 12 15 22"></polyline>
+</svg>
+        </a>
+        <input type="checkbox" id="menu-trigger" class="menu-trigger" />
+        <label for="menu-trigger">
+            <span class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentColor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7L3.40726 7"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488L3.49301 3.51488"></path><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"></path><path stroke-linecap="round" stroke-linejoin="round" d="M0.5 12.5V1.5C0.5 0.947715 0.947715 0.5 1.5 0.5H12.5C13.0523 0.5 13.5 0.947715 13.5 1.5V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C0.947715 13.5 0.5 13.0523 0.5 12.5Z"></path></svg>
+            </span>
+        </label>
+
+        <div class="trigger">
+            <ul class="trigger-container">
+                
+                
+                <li>
+                    <a class="menu-link " href="/pages/projects/">
+                        Projects
+                    </a>
+                    
+                </li>
+                
+                <li>
+                    <a class="menu-link " href="/pages/about/">
+                        About
+                    </a>
+                    
+                </li>
+                
+                <li class="menu-separator">
+                    <span>|</span>
+                </li>
+                
+                
+            </ul>
+            <a id="mode" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1">
+<title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></circle><line x1="7" y1="0.5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="0.5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"></line><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"></line></g></svg>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+        <article>
+            <header class="header">
+                <h1 class="header-title">Screenshot Testing Composables with Paparazzi Library 📸</h1>
+                
+                
+                
+                <div class="post-meta">
+                    <time datetime="2023-05-01T00:00:00&#43;00:00" itemprop="datePublished"> 1 May 2023 </time>
+                </div>
+                
+            </header>
+            
+            <div class="page-content">
+                <p>Hello guys, in today&rsquo;s article we are going to see how we can test our composable in Android development using the <a href="https://github.com/cashapp/paparazzi">Paparazzi</a> library by CashApp.</p>
+<h2 id="pre-requisite">Pre-requisite</h2>
+<p>Paparazzi does not run on monolith applications and hence we shall have to modularise our app.</p>
+<p>Our first step will be creating a module in Android Studio. In this module we are going to create the composable we shall test. Before this, remember to add the Paparazzi dependency to your root module inclusive of the Paparazzi plugin.</p>
+<blockquote>
+<p><strong>NB:</strong> Paparazzi plugin is added to the module with composables to be tested.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-groovy" data-lang="groovy"><span style="display:flex;"><span>classpath <span style="color:#e6db74">&#34;app.cash.paparazzi:paparazzi-gradle-plugin:VERSION&#34;</span>
+</span></span></code></pre></div><h2 id="creating-the-composable">Creating the Composable</h2>
+<p>Onto the next step which is creating our composable. Our view will be a simple card with two text views and one Icon.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@Composable</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">SampleCard</span>(
+</span></span><span style="display:flex;"><span>    title: String,
+</span></span><span style="display:flex;"><span>    subtitle: String
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>    Card(
+</span></span><span style="display:flex;"><span>        modifier = Modifier
+</span></span><span style="display:flex;"><span>            .fillMaxWidth()
+</span></span><span style="display:flex;"><span>            .padding(<span style="color:#ae81ff">16</span>.dp),
+</span></span><span style="display:flex;"><span>        elevation = <span style="color:#a6e22e">CardDefaults</span>.cardElevation(defaultElevation = <span style="color:#ae81ff">4</span>.dp)
+</span></span><span style="display:flex;"><span>    ) {
+</span></span><span style="display:flex;"><span>        Row(
+</span></span><span style="display:flex;"><span>            modifier = <span style="color:#a6e22e">Modifier</span>.padding(<span style="color:#ae81ff">16</span>.dp),
+</span></span><span style="display:flex;"><span>            verticalAlignment = <span style="color:#a6e22e">Alignment</span>.CenterVertically
+</span></span><span style="display:flex;"><span>        ) {
+</span></span><span style="display:flex;"><span>            Icon(
+</span></span><span style="display:flex;"><span>                imageVector = <span style="color:#a6e22e">Icons</span>.<span style="color:#a6e22e">Default</span>.Star,
+</span></span><span style="display:flex;"><span>                contentDescription = <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>                tint = <span style="color:#a6e22e">MaterialTheme</span>.colorScheme.primary
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>            Spacer(modifier = <span style="color:#a6e22e">Modifier</span>.width(<span style="color:#ae81ff">12</span>.dp))
+</span></span><span style="display:flex;"><span>            Column {
+</span></span><span style="display:flex;"><span>                Text(text = title, style = <span style="color:#a6e22e">MaterialTheme</span>.typography.titleMedium)
+</span></span><span style="display:flex;"><span>                Text(text = subtitle, style = <span style="color:#a6e22e">MaterialTheme</span>.typography.bodySmall)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="testing-the-composable">Testing the Composable</h2>
+<p>Finally to the interesting bit — testing the composable. Since Paparazzi does not require an emulator, we are going to write our code in the <strong>test</strong> folder of the module with our composable.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SampleCardTest</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@get</span>:Rule
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> paparazzi = Paparazzi(
+</span></span><span style="display:flex;"><span>        deviceConfig = <span style="color:#a6e22e">DeviceConfig</span>.PIXEL_5,
+</span></span><span style="display:flex;"><span>        theme = <span style="color:#e6db74">&#34;android:Theme.Material.Light.NoActionBar&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">snapshot</span>_sampleCard() {
+</span></span><span style="display:flex;"><span>        paparazzi.snapshot {
+</span></span><span style="display:flex;"><span>            SampleCard(
+</span></span><span style="display:flex;"><span>                title = <span style="color:#e6db74">&#34;Hello Paparazzi&#34;</span>,
+</span></span><span style="display:flex;"><span>                subtitle = <span style="color:#e6db74">&#34;Screenshot testing made easy&#34;</span>
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="running-the-tests">Running the Tests</h2>
+<p>Paparazzi provides commands to run in order to take a snapshot of your composable and also to verify if the images match.</p>
+<p><strong>Generate snapshots:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew recordPaparazziDebug
+</span></span></code></pre></div><p><strong>Verify your composable hasn&rsquo;t broken any tests:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew verifyPaparazziDebug
+</span></span></code></pre></div><p>After generating our snapshots, Android Studio will create a <code>snapshots/</code> folder with an image of the composable. This is the image that will be used as the reference while verifying future changes.</p>
+<h2 id="take-away-">Take Away 🥡</h2>
+<p>In the JVM rule, we can specify a specific device you want to use, a default theme, and more. In such cases the <strong>TestParameterInjector</strong> library by Google comes in handy.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-kotlin" data-lang="kotlin"><span style="display:flex;"><span><span style="color:#a6e22e">@RunWith</span>(TestParameterInjector<span style="color:#f92672">::</span><span style="color:#66d9ef">class</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SampleCardParameterizedTest</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@get</span>:Rule
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">val</span> paparazzi = Paparazzi()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">snapshot</span>_devices(
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@TestParameter</span> deviceConfig: MyDeviceConfig
+</span></span><span style="display:flex;"><span>    ) {
+</span></span><span style="display:flex;"><span>        paparazzi.unsafeUpdateConfig(deviceConfig = deviceConfig.<span style="color:#66d9ef">value</span>)
+</span></span><span style="display:flex;"><span>        paparazzi.snapshot {
+</span></span><span style="display:flex;"><span>            SampleCard(title = <span style="color:#e6db74">&#34;Test&#34;</span>, subtitle = <span style="color:#e6db74">&#34;Parameterized&#34;</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Have a read of the <a href="https://github.com/google/TestParameterInjector">TestParameterInjector docs</a> for more.</p>
+<p>It&rsquo;s also possible to create a helper function where you can render your components — for example, in a Box with certain dimensions — and replace the <code>.snapshot{}</code> Paparazzi function with it.</p>
+<hr>
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://betterprogramming.pub/sanely-test-your-android-ui-libraries-with-paparazzi-b6d46c55f6b0">Sanely Test Your Android UI Libraries with Paparazzi</a></li>
+<li><a href="https://www.droidcon.com/2022/09/29/snapshot-testing-and-more-with-paparazzi/">Snapshot Testing and More with Paparazzi — Droidcon</a></li>
+<li><a href="https://www.getyourguide.careers/posts/how-screenshot-tests-elevate-our-android-testing-strategy">How Screenshot Tests Elevate Our Android Testing Strategy — GetYourGuide</a></li>
+<li><a href="https://www.droidcon.com/2021/11/17/an-introduction-to-effective-snapshot-testing-on-android-2/">An Introduction to Effective Snapshot Testing on Android — Droidcon</a></li>
+</ul>
+
+            </div>
+        </article></main>
+</div>
+<footer class="footer">
+    <span class="footer_item"> </span>
+    &nbsp;
+
+    <div class="footer_social-icons">
+<a href="https://github.com/kanake10" target="_blank" rel="noopener noreferrer me"
+    title="Github">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+</a>
+<a href="https://medium.com/@10kanake" target="_blank" rel="noopener noreferrer me"
+    title="Medium">
+    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke-width="2"
+    viewBox="0 0 76.000000 76.000000" preserveAspectRatio="xMidYMid meet">
+    <g transform="translate(0.000000,76.000000) scale(0.100000,-0.100000)">
+        <path
+            d="M0 380 l0 -380 380 0 380 0 0 380 0 380 -380 0 -380 0 0 -380z m334 85 c30 -63 57 -115 59 -115 2 0 16 30 31 68 15 37 37 88 49 115 l20 47 76 0 76 -1 -27 -20 -28 -21 0 -151 c0 -150 0 -151 27 -179 l27 -28 -109 0 -109 0 27 28 c26 27 27 32 26 143 0 131 3 134 -71 -58 -24 -62 -48 -113 -53 -113 -6 0 -17 16 -24 35 -7 19 -36 83 -64 142 l-52 108 -3 -98 c-3 -97 -2 -99 28 -133 16 -19 30 -39 30 -44 0 -6 -31 -10 -70 -10 -45 0 -70 4 -70 11 0 6 14 27 30 46 30 33 30 35 30 151 0 116 0 118 -31 155 l-30 37 75 0 76 0 54 -115z" />
+    </g>
+</svg>
+</a>
+<a href="https://www.linkedin.com/in/ezra-kanake" target="_blank" rel="noopener noreferrer me"
+    title="Linkedin">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
+</svg>
+</a>
+<a href="/index.xml" target="_blank" rel="noopener noreferrer me"
+    title="Rss">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+</a>
+<a href="https://play.google.com/store/apps/developer?id=kanake" target="_blank" rel="noopener noreferrer me"
+    title="Googleplay">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+</a>
+</div>
+    <small class="footer_copyright">
+        © 2026 Ezra Kanake.
+        Powered by <a href="https://github.com/hugo-sid/hugo-blog-awesome" target="_blank" rel="noopener">Hugo blog awesome</a>.
+    </small>
+</footer>
+
+
+
+
+
+
+
+    
+    <script async src="http://localhost:1313/js/main.js" ></script>
+
+    
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Best-Practices on </title>
+    <link>http://localhost:1313/tags/best-practices/</link>
+    <description>Recent content in Best-Practices on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-GB</language>
+    <lastBuildDate>Mon, 18 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/best-practices/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding Nullability in Android Kotlin: Eliminating Null Pointer Exceptions</title>
+      <link>http://localhost:1313/posts/2025-08-18-understanding-nullability-kotlin/</link>
+      <pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2025-08-18-understanding-nullability-kotlin/</guid>
+      
+      <description>&lt;p&gt;One of the most frustrating and common causes of crashes in Android applications is the Null Pointer Exception (NPE). Luckily, Kotlin introduces a robust type system designed specifically to reduce and in many cases eliminate NPEs.&lt;/p&gt;
+&lt;p&gt;In Kotlin, nullability is not just a runtime concern but a compile-time feature. This means the compiler actively helps developers catch potential null-related issues before they ever reach production.&lt;/p&gt;
+&lt;h2 id=&#34;key-concepts-of-nullability-in-kotlin&#34;&gt;Key Concepts of Nullability in Kotlin&lt;/h2&gt;
+&lt;h3 id=&#34;1-non-nullable-types-default&#34;&gt;1. Non-nullable Types (Default)&lt;/h3&gt;
+&lt;p&gt;By default, every variable in Kotlin is non-nullable. This means you cannot assign a &lt;code&gt;null&lt;/code&gt; value to it.&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>

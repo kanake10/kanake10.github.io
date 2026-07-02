@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shot on </title>
+    <link>http://localhost:1313/tags/shot/</link>
+    <description>Recent content in Shot on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-GB</language>
+    <lastBuildDate>Fri, 05 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/shot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shoot your Composables with Shot Library.</title>
+      <link>http://localhost:1313/posts/2023-05-05-shoot-composables-shot-library/</link>
+      <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2023-05-05-shoot-composables-shot-library/</guid>
+      
+      <description>&lt;p&gt;Hello guys, welcome back .In the previous &lt;a href=&#34;https://medium.com/@10kanake/screenshot-testing-composable-with-paparazzi-library-e766006d0705&#34;&gt;article&lt;/a&gt;, we learnt how we can test our composables using paparazzi library in android development.In this article, weare going to test our android composables using &lt;a href=&#34;https://github.com/pedrovgs/Shot&#34;&gt;shot&lt;/a&gt; library.A little difference between paparazzi and shot is that shot library uses emulator/device to run while paparazzi does not need emulator.Shot library can also be run in single module app unlike paparazzi.&lt;/p&gt;
+&lt;p&gt;Keeping this short and sweet, let&amp;rsquo;s jump straight to integrating shot library in our android app.&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>
