@@ -21,22 +21,22 @@ One of the first lessons was understanding that every public declaration becomes
 
 Consider the following API:
 
-\`\`\`kotlin
+```kotlin
 class TranslateClient {
     fun translate(text: String): TranslationResult
 }
-\`\`\`
+```
 
 Once developers begin using this method, changing it can become a breaking change:
 
-\`\`\`kotlin
+```kotlin
 class TranslateClient {
     fun translate(
         text: String,
         targetLanguage: String
     ): TranslationResult
 }
-\`\`\`
+```
 
 Although this appears to be a simple improvement, applications using the previous version will fail to compile after upgrading.
 
@@ -48,21 +48,21 @@ When building an SDK, every public API should be treated as a long-term commitme
 
 Early during development, it was tempting to expose internal classes:
 
-\`\`\`kotlin
+```kotlin
 class TranslationRepository
 class TranslationApi
 class TranslationMapper
 class TranslationCache
-\`\`\`
+```
 
 However, every public class increases maintenance costs.
 
 Instead, the Translate SDK exposes only the APIs consumers need:
 
-\`\`\`kotlin
+```kotlin
 Translate.initialize(...)
 Translate.translate(...)
-\`\`\`
+```
 
 Everything else remains internal.
 
@@ -81,7 +81,7 @@ The SDK also ships an optional Compose UI module, and this is where a different 
 
 The first version of the theme leaned directly on Material3:
 
-\`\`\`kotlin
+```kotlin
 @Composable
 fun TranslateTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -93,7 +93,7 @@ fun TranslateTheme(
         content = content
     )
 }
-\`\`\`
+```
 
 This works fine as long as every consumer uses Material3 and is happy with the SDK's exact palette. Neither assumption holds for an SDK meant to drop into arbitrary host apps. Some consumers use Material3 with their own brand colors. Some don't use Material3 at all. All of them still needed the components to render sensibly with zero configuration.
 
@@ -101,7 +101,7 @@ This works fine as long as every consumer uses Material3 and is happy with the S
 
 ### Semantic tokens instead of a Material dependency
 
-\`\`\`kotlin
+```kotlin
 @Immutable
 data class TranslateColors(
     val primary: Color,
@@ -122,13 +122,13 @@ data class TranslateTypography(
     val title: TextStyle,
     val label: TextStyle,
 )
-\`\`\`
+```
 
 ### CompositionLocals with safe fallback defaults
 
 The key design constraint: a consumer who forgets to wrap their content in the SDK's theme should still get a sensible result and not a crash.
 
-\`\`\`kotlin
+```kotlin
 val LocalTranslateColors = staticCompositionLocalOf { lightTranslateColors() }
 val LocalTranslateTypography = staticCompositionLocalOf { defaultTranslateTypography() }
 
@@ -139,13 +139,13 @@ object TranslateThemeTokens {
     val typography: TranslateTypography
         @Composable get() = LocalTranslateTypography.current
 }
-\`\`\`
+```
 
 Every internal composable now reads `TranslateThemeTokens.colors.x` instead of `MaterialTheme.colorScheme.x`.
 
 ### One theme entry point, three ways to use it
 
-\`\`\`kotlin
+```kotlin
 @Composable
 fun TranslateTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -167,7 +167,7 @@ fun TranslateTheme(
         )
     }
 }
-\`\`\`
+```
 
 This single signature ended up covering every case that came up:
 
@@ -186,7 +186,7 @@ Both surfaced only once the theme was actually wired up end-to-end, which is its
 
 One non-obvious wrinkle: wrapping `Button`, `OutlinedTextField`, and `TextButton` in a theme that provides `TranslateThemeTokens` does **not** automatically make those specific widgets use it. Material3 components resolve their own default colors from the ambient `MaterialTheme.colorScheme`, regardless of what other `CompositionLocal`s are present. Getting them to follow the SDK's own tokens required passing `colors` explicitly at each call site:
 
-\`\`\`kotlin
+```kotlin
 Button(
     onClick = onClick,
     colors = ButtonDefaults.buttonColors(
@@ -194,7 +194,7 @@ Button(
         contentColor = TranslateThemeTokens.colors.onPrimary,
     ),
 ) { /* ... */ }
-\`\`\`
+```
 
 Without this, a consumer who skips the SDK's theme wrapper entirely would still see some elements correctly falling back to plain black-and-white defaults, while unstyled widget internals — dropdown menu chrome, ripple color, icon buttons — silently inherited whatever Material theme happened to be ambient in their app, or Compose's default purple baseline if there wasn't one. Closing that gap meant explicitly theming each Material primitive individually rather than assuming the wrapper theme would cascade everywhere on its own.
 
@@ -206,15 +206,15 @@ Source compatibility and binary compatibility are not always the same.
 
 Suppose an application compiles against version 1.0:
 
-\`\`\`kotlin
+```kotlin
 client.translate("Hello")
-\`\`\`
+```
 
 If a later SDK version removes or changes that method, applications may encounter runtime errors such as:
 
-\`\`\`text
+```text
 java.lang.NoSuchMethodError
-\`\`\`
+```
 
 This happens because the application was compiled against an older version of the API.
 
@@ -238,7 +238,7 @@ To track changes to the public API surface, the Translate SDK uses Metalava.
 
 Metalava generates a signature file representing all public APIs:
 
-\`\`\`text
+```text
 package com.kanake.translate {
 
   public final class TranslateClient {
@@ -246,30 +246,30 @@ package com.kanake.translate {
   }
 
 }
-\`\`\`
+```
 
 This file acts as a snapshot of the SDK's public contract.
 
 Generating the API file:
 
-\`\`\`bash
+```bash
 ./gradlew metalavaGenerateSignature
-\`\`\`
+```
 
 Checking for compatibility:
 
-\`\`\`bash
+```bash
 ./gradlew metalavaCheckCompatibility
-\`\`\`
+```
 
 If a public method is removed or changed, Metalava reports the issue before the SDK is released.
 
 For example:
 
-\`\`\`text
+```text
 error: Removed method:
     TranslationResult translate(String text)
-\`\`\`
+```
 
 This helps prevent accidental breaking changes.
 
@@ -281,7 +281,7 @@ Running API checks locally is useful, but developers can forget to run them.
 
 To solve this, API validation was integrated into GitHub Actions:
 
-\`\`\`yaml
+```yaml
 name: API Validation
 
 on:
@@ -306,7 +306,7 @@ jobs:
 
       - name: Run API checks
         run: ./gradlew metalavaCheckCompatibility
-\`\`\`
+```
 
 Now every pull request automatically validates the SDK's public API before merging.
 
@@ -320,21 +320,21 @@ Without proper configuration, important classes or metadata may be removed.
 
 For example:
 
-\`\`\`kotlin
+```kotlin
 @Serializable
 data class TranslationRequest(
     val text: String
 )
-\`\`\`
+```
 
 If required metadata is removed, runtime failures can occur.
 
 The Translate SDK ships with consumer ProGuard rules:
 
-\`\`\`text
+```text
 -keep class com.kanake.translate.** { *; }
 -keepattributes *Annotation*
-\`\`\`
+```
 
 These rules help applications safely shrink and obfuscate their code while preserving the SDK's required components.
 
@@ -348,17 +348,17 @@ Another important lesson was avoiding implementation details in public APIs.
 
 For example:
 
-\`\`\`kotlin
+```kotlin
 fun translate(): retrofit2.Response<TranslationResponse>
-\`\`\`
+```
 
 This forces every consumer to depend on Retrofit.
 
 Instead:
 
-\`\`\`kotlin
+```kotlin
 fun translate(): TranslationResult
-\`\`\`
+```
 
 The networking implementation remains internal.
 
@@ -387,11 +387,11 @@ A simple approach is:
 
 For example:
 
-\`\`\`text
+```text
 1.0.0
 1.1.0
 2.0.0
-\`\`\`
+```
 
 Clear versioning helps developers understand the impact of upgrading.
 
